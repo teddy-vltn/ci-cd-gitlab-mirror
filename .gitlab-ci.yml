@@ -9,5 +9,7 @@ before_script:
 
 test:
   stage: test
+  tags:
+    - docker
   script:
     - pytest
