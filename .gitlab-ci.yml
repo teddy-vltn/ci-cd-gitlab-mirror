@@ -6,10 +6,15 @@ stages:
 before_script:
   - pip install --upgrade pip
   - pip install -r requirements.txt
+  - pip install pytest-cov  
 
 test:
   stage: test
   tags:
     - docker
   script:
-    - pytest
+    - pytest --cov=. --cov-report=xml --cov-report=term
+  artifacts:
+    paths:
+      - coverage.xml
+    when: always
