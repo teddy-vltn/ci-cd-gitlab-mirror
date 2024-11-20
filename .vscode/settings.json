@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./src/my_arithmetic_tvalenti"
+    ]
+}
