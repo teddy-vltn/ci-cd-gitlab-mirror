@@ -18,7 +18,7 @@ test:
   coverage: '/TOTAL.*\s+(\d+%)$/'
   artifacts:
     paths:
-      - coverage.xml
+      - dist/
     when: always
 
 build:
@@ -28,7 +28,8 @@ build:
   only:
     - tags
   script:
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
     - echo "my-arithmetic-$USER deployment on stable servers"
-    - pip install hatch
     - hatch build
     - ls dist/
