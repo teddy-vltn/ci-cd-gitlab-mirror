@@ -1,3 +1,6 @@
 pytest
 hatch
 hatch-vcs
+sphinx 
+sphinx-rtd-theme 
+sphinxcontrib-napoleon
