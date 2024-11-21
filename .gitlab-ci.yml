@@ -2,6 +2,7 @@ image: python:3.10
 
 stages:
   - test
+  - build
 
 before_script:
   - pip install --upgrade pip
@@ -19,3 +20,13 @@ test:
     paths:
       - coverage.xml
     when: always
+
+build:
+  stage: build
+  only:
+    - tags
+  script:
+    - echo "my-arithmetic-$USER deployment on stable servers"
+    - pip install hatch
+    - hatch build
+    - ls dist/
