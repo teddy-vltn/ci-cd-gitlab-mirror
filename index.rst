@@ -14,11 +14,3 @@ documentation for details.
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
-API Documentation
-=================
-
-.. automodule:: my-arithmetic-tvalenti
-   :members:
-   :undoc-members:
-   :show-inheritance:
