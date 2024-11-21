@@ -33,7 +33,6 @@ Source = "https://github.com/Teddy Valentin/my-arithmetic-tvalenti"
 
 [tool.hatch.version]
 path = "src/my_arithmetic_tvalenti/__about__.py"
-source = "vcs"
 
 [tool.hatch.envs.types]
 extra-dependencies = [
