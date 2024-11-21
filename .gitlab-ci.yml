@@ -23,6 +23,8 @@ test:
 
 build:
   stage: build
+  tags:
+    - docker
   only:
     - tags
   script:
