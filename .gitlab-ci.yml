@@ -2,6 +2,7 @@ image: python:3.10
 
 stages:
   - test
+  - build
 
 before_script:
   - pip install --upgrade pip
@@ -17,5 +18,31 @@ test:
   coverage: '/TOTAL.*\s+(\d+%)$/'
   artifacts:
     paths:
-      - coverage.xml
+      - dist/
     when: always
+
+build_develop:
+  stage: build
+  tags:
+    - docker
+  script:
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+    - echo "my-arithmetic-$USER deployment on develop servers"
+    - hatch build
+    - ls dist/
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "develop"
+
+build_main:
+  stage: build
+  tags:
+    - docker
+  script:
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+    - echo "my-arithmetic-$USER deployment on servers"
+    - hatch build
+    - ls dist/
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "main"

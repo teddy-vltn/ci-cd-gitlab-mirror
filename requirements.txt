@@ -1,1 +1,3 @@
 pytest
+hatch
+hatch-vcs
