@@ -21,15 +21,20 @@ test:
       - dist/
     when: always
 
-build:
+build_develop:
   stage: build
   tags:
     - docker
   only:
-    - tags
+    - develop
   script:
-    - pip install --upgrade pip
-    - pip install -r requirements.txt
-    - echo "my-arithmetic-$USER deployment on stable servers"
+    - echo "Building for develop branch..."
     - hatch build
     - ls dist/
+  after_script:
+    - git config --global user.email "ci@cd.com"
+    - git config --global user.name "CI/CD"
+    - |
+      TAG_NAME="develop-$(date +'%Y%m%d%H%M%S')"
+      git tag $TAG_NAME
+      git push origin $TAG_NAME
