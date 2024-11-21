@@ -34,7 +34,7 @@ build_develop:
     - hatch build
     - ls dist/
   rules:
-    - if: $CI_COMMIT_BRANCH == "develop" 
+    - if: $CI_COMMIT_REF_NAME == "develop" 
 
 build_main:
   stage: build
@@ -47,4 +47,4 @@ build_main:
     - hatch build
     - ls dist/
   rules:
-    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_REF_NAME == "main"
